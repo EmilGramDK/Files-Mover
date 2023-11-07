@@ -1,0 +1,16 @@
+{
+  "name": "file-mover",
+  "version": "1.0.0",
+  "description": "A file moving application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build": "pkg app.js -t node10-win-x64 -o file_mover.exe"
+  },
+  "dependencies": {},
+  "pkg": {
+    "assets": [
+      "files/*"
+    ]
+  }
+}
